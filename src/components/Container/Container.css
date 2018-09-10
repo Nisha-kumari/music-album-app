@@ -1,3 +1,4 @@
+
 .detailCard {
     width: 100%;
     height: 150px;
@@ -21,6 +22,18 @@
     width: 100%;
     height: 100%;
 }
+
+.artistName,
+.genre {
+    color: #2980B9;
+    font-size: 15px;
+}
+
+.artistTitle,
+.categoryTitle {
+    font-size: 16px;
+}
+
 .detailWrapper{
 width: calc(100% - 160px);
 justify-content: space-between;
@@ -38,7 +51,10 @@ display: flex;
 }
 
 .showMoreLink {
-text-decoration: none;
+    text-decoration: none;
+    color: #2980B9;
+    font-size: 14px;
+    font-weight: 800;
 }
 
 .title {

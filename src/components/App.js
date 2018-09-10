@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import Header from './Header/Header';
 import data from '../Data.json';
-import Container from './Container';
+import Container from './Container/Container';
 import './App.css';
 
 class App extends Component {
@@ -10,26 +10,29 @@ class App extends Component {
     this.state={
       value: '',
       filterData: [],
-    }
+        updatedList: [],
+      isFilterList: false,
+    };
     this.updateList = this.updateList.bind(this);
   }
   updateList(e){
     this.setState({value: e.target.value,
-      filterData: data.entry.filter(item => 
-        item.artist.label === e.target.value
-    ),
-  })
-  //  const filterData = data.entry.filter(item => 
-  //    item.artist.label === e.target.value
-     
-  //   );
-  //  console.log("filter",filterData);
+        isFilterList: !this.state.isFilterList,
+        filterData: data.entry.filter(item =>
+            item.artist.label.toLowerCase().includes(e.target.value.toLowerCase())
+    )
+  });
   }
   render() {
     return (
-      <div className="App">
+      <div className="app">
          <Header updateList={evt =>this.updateList(evt)}  value={this.state.value}/>
-         <Container filterData={this.state.filterData}/>
+          <div className="contentWrapper">
+              <Container
+                  filterData={this.state.filterData}
+                  isFilterList={this.state.isFilterList}
+              />
+          </div>
       </div>
     );
   }
